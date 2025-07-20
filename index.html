@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mosaic Photo Generator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/mosaic_visualizer.css">
+</head>
+
+<body>
+
+    <div id="mainContent">
+
+        <div class="mosaic-container">
+
+            <header class="mosaic-header">
+                <h1>Photo Mosaic Generator</h1>
+                <p>Create a stunning mosaic from your own pictures, right in your browser.</p>
+            </header>
+
+
+            <main class="mosaic-main">
+
+                <div class="controls-column">
+                    <div class="control-section">
+                        <h2 class="step-header">
+                            <span class="step-number">1</span> Upload Target Image
+                        </h2>
+                        <div class="control-box">
+                            <input type="file" id="target-image-input" accept="image/*" class="file-input">
+                            <div id="target-preview" class="preview-container hidden">
+                                <p>Preview:</p>
+                                <img id="target-image-preview" alt="Target Image Preview">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-section">
+                        <h2 class="step-header">
+                            <span class="step-number">2</span> Upload Source Library
+                        </h2>
+                        <div class="control-box">
+                            <input type="file" id="source-images-input" multiple accept="image/*" class="file-input">
+                            <p id="source-image-count" class="image-count">0 images selected.</p>
+                        </div>
+                    </div>
+
+                    <div class="control-section">
+                        <h2 class="step-header">
+                            <span class="step-number">3</span> Configure Mosaic
+                        </h2>
+                        <div class="control-box">
+                            <div class="slider-group">
+                                <label for="tile-size">Tile Size</label>
+                                <input type="range" id="tile-size" min="1" max="50" value="30" step="1">
+                                <div class="slider-value"><span id="tile-size-value">30</span>px</div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="blending">Color Blending</label>
+                                <input type="range" id="blending" min="0" max="1" value="0.5" step="0.05">
+                                <div class="slider-value"><span id="blending-value">50</span>%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="generate-btn" class="action-button">Generate Mosaic</button>
+                </div>
+
+                <div class="canvas-column">
+                    <div id="progress-container" class="hidden">
+                        <p id="progress-label">Initializing...</p>
+                        <progress id="progress-bar" value="0" max="100"></progress>
+                        <p id="progress-text">&nbsp;</p>
+                    </div>
+                    <div id="canvas-container">
+                        <canvas id="mosaic-canvas" class="hidden"></canvas>
+                    </div>
+                    <button id="download-btn" class="action-button hidden">Download Image</button>
+                </div>
+            </main>
+
+            <div id="error-modal" class="modal-overlay hidden">
+                <div class="modal-content">
+                    <h3>Error</h3>
+                    <p id="error-message">Something went wrong.</p>
+                    <button id="close-modal-btn" class="modal-close-button">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="mosaic_visualizer.js"></script>
+</body>
+</html>
